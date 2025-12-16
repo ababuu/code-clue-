@@ -1,0 +1,23 @@
+# Dependencies
+/node_modules
+/server/node_modules
+/client/node_modules
+
+# Build artifacts
+/build
+/dist
+/server/build
+/server/dist
+/client/build
+/client/dist
+
+# Logs
+*.log
+
+# Environment variables
+.env
+/server/.env
+/client/.env
+
+# IDE file
+.vscode/
