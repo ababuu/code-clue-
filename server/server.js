@@ -45,7 +45,7 @@ app.post("/api/explain-code", async (req, res) => {
             ${codeSnippet}
             `;
 
-    const response = await ai.models.generateContent({
+    const response = await ai.models.generateContentStream({
       model: "gemini-2.5-flash",
       contents: [{ role: "user", parts: [{ text: prompt }] }],
       config: {
@@ -57,18 +57,24 @@ app.post("/api/explain-code", async (req, res) => {
       },
     });
 
-    const explanation = response.candidates?.[0]?.content?.parts?.[0]?.text;
+    res.setHeader("Content-Type", "text/plain");
+    res.setHeader("Transfer-Encoding", "chunked");
 
-    if (!explanation) {
-      return res.status(500).json({ error: "Failed to generate explanation" });
+    for await (const chunk of response) {
+      const text = chunk.text;
+      if (text) {
+        res.write(text);
+      }
     }
 
-    res.json({ explanation, language: language || "unknown" });
+    res.end();
   } catch (error) {
     console.error("Code clue API error:", error);
-    res
-      .status(500)
-      .json({ error: "Internal Server Error", details: error.message });
+    if (!res.headersSent) {
+      res
+        .status(500)
+        .json({ error: "Internal Server Error", details: error.message });
+    }
   }
 });
 

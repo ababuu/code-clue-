@@ -1,6 +1,6 @@
 # Code Clue
 
-[Live Demo](LINK_GOES_HERE)
+<!-- [Live Demo](LINK_GOES_HERE) -->
 
 ## Introduction
 

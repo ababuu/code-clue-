@@ -23,10 +23,10 @@ export async function explain(prevState, formData) {
         error: errorData.error || "Failed to fetch explanation from server.",
       };
     }
-    const data = await response.json();
+
     return {
       success: true,
-      data,
+      body: response.body,
     };
   } catch (error) {
     return {
