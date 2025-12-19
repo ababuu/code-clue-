@@ -52,7 +52,7 @@ app.post("/api/explain-code", async (req, res) => {
         temperature: 0.3,
         maxOutputTokens: 1200,
         thinkingConfig: {
-          thinkingBudget: 0, // use dynamic budget
+          thinkingBudget: 0,
         },
       },
     });
