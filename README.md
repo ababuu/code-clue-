@@ -1,10 +1,16 @@
 # Code Clue
 
-<!-- [Live Demo](LINK_GOES_HERE) -->
+[Live Demo](https://code-clue-client.vercel.app/)
 
 ## Introduction
 
 Code Clue is an AI-powered application designed to help developers understand code snippets. By leveraging the power of Google's Gemini AI, it provides detailed explanations for code provided by the user, making it easier to grasp complex logic or unfamiliar syntax.
+
+## Features
+
+- **Real-time Streaming:** Explanations are streamed instantly, providing a responsive user experience.
+- **Multi-Language Support:** Supports JavaScript, Python, Java, and more.
+- **Clean UI:** Built with Tailwind CSS for a modern, distraction-free interface.
 
 ## Tech Stack
 
@@ -39,7 +45,19 @@ To run this project locally, follow these steps:
     ```
 
 3.  **Environment Setup:**
-    Ensure you have the necessary environment variables set up (e.g., Google GenAI API key) in your server configuration.
+
+    Create a `.env` file in the `server` directory:
+
+    ```env
+    GOOGLE_GENAI_API_KEY=your_api_key
+    FRONTEND_URL=http://localhost:5173
+    ```
+
+    Create a `.env` file in the `client` directory:
+
+    ```env
+    VITE_API_BASE_URL=http://localhost:3002/api
+    ```
 
 4.  **Start the Application:**
     Run the following command to start both the client and server concurrently:
